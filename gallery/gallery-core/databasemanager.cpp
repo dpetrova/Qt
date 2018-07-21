@@ -38,5 +38,5 @@ void DatabaseManager::debugQuery(const QSqlQuery& query)
 DatabaseManager::~DatabaseManager()
 {
     mDatabase->close(); //connection is closed
-    delete mDatabase; //pointer is properly deleted
+    //delete mDatabase; //pointer is properly deleted
 }

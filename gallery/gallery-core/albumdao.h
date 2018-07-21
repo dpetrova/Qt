@@ -8,6 +8,8 @@
 class QSqlDatabase;
 class Album;
 
+using namespace std;
+
 class AlbumDao
 {
 public:
@@ -16,7 +18,8 @@ public:
     void addAlbum(Album& album) const;
     void updateAlbum(const Album& album) const;
     void removeAlbum(int id) const;
-    QVector<Album*> albums() const;
+    //QVector<Album*> albums() const;
+    unique_ptr<vector<unique_ptr<Album>>> albums() const;
 
 private:
     QSqlDatabase& mDatabase;

@@ -70,18 +70,33 @@ void AlbumDao::removeAlbum(int id) const
 }
 
 //get all albums in the database
-QVector<Album*> AlbumDao::albums() const
+unique_ptr<vector<unique_ptr<Album>>> AlbumDao::albums() const //use smart pointers to automatically manage memory and ownership
 {
     QSqlQuery query("SELECT * FROM albums", mDatabase);
     query.exec();
-    QVector<Album*> list;
+    unique_ptr<vector<unique_ptr<Album>>> list(new vector<unique_ptr<Album>>());
     while(query.next()) //walk through multiple rows for a given request
     {
-        Album* album = new Album();
-        //takes a column name parameter and returns a QVariant value that is casted to the proper type
+        unique_ptr<Album> album(new Album()); //secure the creation of album using smart pointer
+        //query.value("xxx") takes a column name parameter and returns a QVariant value that is casted to the proper type
         album->setId(query.value("id").toInt());
         album->setName(query.value("name").toString());
-        list.append(album);
+        list->push_back(move(album)); //add album to the list and give the ownership of the album to the list
     }
     return list;
 }
+//QVector<Album*> AlbumDao::albums() const
+//{
+//    QSqlQuery query("SELECT * FROM albums", mDatabase);
+//    query.exec();
+//    QVector<Album*> list;
+//    while(query.next()) //walk through multiple rows for a given request
+//    {
+//        Album* album = new Album();
+//        //takes a column name parameter and returns a QVariant value that is casted to the proper type
+//        album->setId(query.value("id").toInt());
+//        album->setName(query.value("name").toString());
+//        list.append(album);
+//    }
+//    return list;
+//}

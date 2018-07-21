@@ -61,21 +61,38 @@ void PictureDao::removePicturesForAlbum(int albumId) const
     DatabaseManager::debugQuery(query);
 }
 
-QVector<Picture*> PictureDao::picturesForAlbum(int albumId) const
+unique_ptr<vector<unique_ptr<Picture>>> PictureDao::picturesForAlbum(int albumId) const
 {
     QSqlQuery query(mDatabase);
     query.prepare("SELECT * FROM pictures WHERE album_id = (:album_id)");
     query.bindValue(":album_id", albumId);
     query.exec();
     DatabaseManager::debugQuery(query);
-    QVector<Picture*> list;
-    while(query.next())
-    {
-        Picture* picture = new Picture();
+    unique_ptr<vector<unique_ptr<Picture>>> list(new vector<unique_ptr<Picture>>());
+    while(query.next()) {
+        unique_ptr<Picture> picture(new Picture());
         picture->setId(query.value("id").toInt());
         picture->setAlbumId(query.value("album_id").toInt());
         picture->setFileUrl(query.value("url").toString());
-        list.append(picture);
+        list->push_back(move(picture));
     }
     return list;
 }
+//QVector<Picture*> PictureDao::picturesForAlbum(int albumId) const
+//{
+//    QSqlQuery query(mDatabase);
+//    query.prepare("SELECT * FROM pictures WHERE album_id = (:album_id)");
+//    query.bindValue(":album_id", albumId);
+//    query.exec();
+//    DatabaseManager::debugQuery(query);
+//    QVector<Picture*> list;
+//    while(query.next())
+//    {
+//        Picture* picture = new Picture();
+//        picture->setId(query.value("id").toInt());
+//        picture->setAlbumId(query.value("album_id").toInt());
+//        picture->setFileUrl(query.value("url").toString());
+//        list.append(picture);
+//    }
+//    return list;
+//}
