@@ -6,68 +6,112 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>158</height>
+    <width>480</width>
+    <height>165</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>40</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="topMargin">
+       <number>4</number>
+      </property>
+      <property name="bottomMargin">
+       <number>4</number>
+      </property>
       <item>
        <widget class="QPushButton" name="backButton">
+        <property name="maximumSize">
+         <size>
+          <width>130</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Back</string>
+         <string> Back</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normalon>:/icons/img/leftArrow.png</normalon>
-         </iconset>
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/img/leftArrow.png</normaloff>:/icons/img/leftArrow.png</iconset>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="pictureNameLabel">
+       <widget class="QLabel" name="nameLabel">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">
-         <string>lorem_ipsum.jpg</string>
+         <string>lorem ipsum.jpg</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="previousButton">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normalon>:/icons/img/prev.png</normalon>
-         </iconset>
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/img/prev.png</normaloff>:/icons/img/prev.png</iconset>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="nextButton">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normalon>:/icons/img/next.png</normalon>
-         </iconset>
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/img/next.png</normaloff>:/icons/img/next.png</iconset>
         </property>
        </widget>
       </item>
@@ -76,23 +120,31 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>165</width>
+          <width>50</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="deletePictureButton">
+       <widget class="QPushButton" name="deleteButton">
+        <property name="maximumSize">
+         <size>
+          <width>130</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Delete</string>
+         <string> Delete</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normalon>:/icons/img/Cancel.png</normalon>
-         </iconset>
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/img/Cancel.png</normaloff>:/icons/img/Cancel.png</iconset>
         </property>
        </widget>
       </item>
@@ -100,14 +152,22 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="pictureLabel">
      <property name="text">
       <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

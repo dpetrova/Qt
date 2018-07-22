@@ -67,7 +67,7 @@ bool PictureModel::removeRows(int row, int count, const QModelIndex& parent)
     while(countLeft--)
     {
         const Picture& picture = *mPictures->at(row + countLeft);
-        mDatabaseManager.pictureDao.removePicture(picture.id());
+        mDatabaseManager.pictureDao.removePicture(picture.getId());
     }
     mPictures->erase(mPictures->begin() + row, mPictures->begin() + row + count);
     endRemoveRows();

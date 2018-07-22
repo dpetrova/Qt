@@ -85,7 +85,7 @@ bool AlbumModel::removeRows(int row, int count, const QModelIndex& parent)
     while (countLeft--) //loop on the rows left to delete
     {
         const Album& album = *mAlbums->at(row + countLeft);
-        mDatabaseManager.albumDao.removeAlbum(album.id()); //delete it from the database
+        mDatabaseManager.albumDao.removeAlbum(album.getId()); //delete it from the database
     }
     mAlbums->erase(mAlbums->begin() + row, mAlbums->begin() + row + count); //remove from mAlbums
     endRemoveRows();

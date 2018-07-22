@@ -11,10 +11,10 @@ PictureWidget::PictureWidget(QWidget *parent) :
     mSelectionModel(nullptr)
 {
     ui->setupUi(this);
-    ui->pictureNameLabel->setMinimumSize(1, 1);
+    ui->pictureLabel->setMinimumSize(1, 1);
 
     connect(ui->backButton, &QPushButton::clicked, this, &PictureWidget::backToGallery);
-    connect(ui->deletePictureButton, &QPushButton::clicked, this, &PictureWidget::deletePicture);
+    connect(ui->deleteButton, &QPushButton::clicked, this, &PictureWidget::deletePicture);
     connect(ui->previousButton, &QPushButton::clicked, [this] () {
         QModelIndex currentModelIndex = mSelectionModel->currentIndex();
         QModelIndex previousModelIndex = mSelectionModel->model()->index(currentModelIndex.row() - 1, 0);
@@ -80,21 +80,21 @@ void PictureWidget::deletePicture()
 void PictureWidget::loadPicture(const QItemSelection& selected)
 {
     if (selected.indexes().isEmpty()) {
-        ui->pictureNameLabel->setText("");
-        ui->pictureNameLabel->setPixmap(QPixmap());
-        ui->deletePictureButton->setEnabled(false);
+        ui->nameLabel->setText("");
+        ui->pictureLabel->setPixmap(QPixmap());
+        ui->deleteButton->setEnabled(false);
         return;
     }
 
     QModelIndex current = selected.indexes().at(0);
     mPixmap = QPixmap(mModel->data(current, PictureModel::Roles::FilePathRole).toString());
 
-    ui->pictureNameLabel->setText(mModel->data(current, Qt::DisplayRole).toString());
+    ui->nameLabel->setText(mModel->data(current, Qt::DisplayRole).toString());
     updatePicturePixmap();
 
     ui->previousButton->setEnabled(current.row() > 0);
     ui->nextButton->setEnabled(current.row() < (mModel->rowCount() - 1));
-    ui->deletePictureButton->setEnabled(true);
+    ui->deleteButton->setEnabled(true);
 }
 
 //every time the widget is resized, we call updatePicturePixmap()
@@ -106,5 +106,5 @@ void PictureWidget::updatePicturePixmap()
     }
     //mPixmap variable is the full-size picture from PictureModel
     //this function will scale the picture to the pictureLabel size, keeping the aspect ratio
-    ui->pictureNameLabel->setPixmap(mPixmap.scaled(ui->pictureLabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ui->pictureLabel->setPixmap(mPixmap.scaled(ui->pictureLabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
