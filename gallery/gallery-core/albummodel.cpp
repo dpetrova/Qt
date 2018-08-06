@@ -19,7 +19,7 @@ QModelIndex AlbumModel::addAlbum(const Album& album)
     //first parameter of the beginInsertRows() function is the parent for this new element
     //the root for a model is always an empty QModelIndex() constructor, because we do not handle any hierarchical relationship
     //following parameters are the first and last modified indexes, as we insert a single element per call, they are same
-    beginInsertRows(QModelIndex(), rowIndex, rowIndex); //nforms that rows are about to change for the given indexes
+    beginInsertRows(QModelIndex(), rowIndex, rowIndex); //informs that rows are about to change for the given indexes
     unique_ptr<Album> newAlbum(new Album(album)); //create a copy of the album row
     mDatabaseManager.albumDao.addAlbum(*newAlbum); //insert new object into the database
     mAlbums->push_back(move(newAlbum)); //added new object to mAlbums and its ownership is transferred

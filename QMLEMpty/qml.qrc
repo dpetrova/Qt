@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>../../../Pictures/fdo-admin-icons/avatar.png</file>
+        <file>../../../Pictures/fdo-admin-icons/delete.png</file>
+        <file>../../../Pictures/fdo-admin-icons/done.png</file>
+        <file>../../../Pictures/fdo-admin-icons/edit.png</file>
+        <file>../../../Pictures/fdo-admin-icons/file.png</file>
+        <file>../../../Pictures/fdo-admin-icons/in_progress.png</file>
+        <file>../../../Pictures/fdo-admin-icons/pass.png</file>
+        <file>../../../Pictures/fdo-admin-icons/pending.png</file>
+        <file>../../../Pictures/fdo-admin-icons/username.png</file>
+        <file>VerticalLayout.qml</file>
+        <file>Circle.qml</file>
+        <file>Receiver.qml</file>
+        <file>Sender.qml</file>
+        <file>Background.qml</file>
+        <file>BackgroundForm.qml</file>
+        <file>AnimalData.qml</file>
+        <file>AnimalDataForm.ui.qml</file>
+    </qresource>
+</RCC>
