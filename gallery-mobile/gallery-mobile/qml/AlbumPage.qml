@@ -32,7 +32,7 @@ PageTheme {
                 source: "qrc:/res/icons/album-delete.svg"
             }
             onClicked: {
-                albumModel.removeRows(albumRowIndex, 1)
+                albumModel.removeRows(albumRowIndex, 1)                
                 stackView.pop()
             }
         }
